@@ -10,4 +10,6 @@ public interface UsuarioService {
     List<UsuarioResponseDTO> obtenerTodos();
     UsuarioResponseDTO obtenerPorId(Long id);
     void eliminarUsuario(Long id);
+    UsuarioResponseDTO actualizarUsuario(Long id, UsuarioRequestDTO dto);
+
 }

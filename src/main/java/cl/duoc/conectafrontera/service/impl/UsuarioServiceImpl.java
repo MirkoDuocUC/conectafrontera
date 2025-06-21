@@ -60,4 +60,29 @@ public class UsuarioServiceImpl implements UsuarioService {
         dto.setRol(usuario.getRol());
         return dto;
     }
+
+    @Override
+    public UsuarioResponseDTO actualizarUsuario(Long id, UsuarioRequestDTO dto) {
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+
+        usuario.setNombre(dto.getNombre());
+        usuario.setCorreo(dto.getCorreo());
+        usuario.setContrasena(passwordEncoder.encode(dto.getContrasena()));
+        usuario.setRol(dto.getRol());
+
+        Usuario actualizado = usuarioRepository.save(usuario);
+
+        UsuarioResponseDTO response = new UsuarioResponseDTO();
+        response.setIdUsuario(actualizado.getIdUsuario());
+        response.setNombre(actualizado.getNombre());
+        response.setCorreo(actualizado.getCorreo());
+        response.setRol(actualizado.getRol());
+        return response;
+    }
+
+
+
+
 }
+

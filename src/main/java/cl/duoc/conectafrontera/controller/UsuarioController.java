@@ -39,4 +39,12 @@ public class UsuarioController {
     public void eliminar(@PathVariable Long id) {
         usuarioService.eliminarUsuario(id);
     }
+
+    @PreAuthorize("hasRole('ADMINISTRADOR')")
+    @PutMapping("/{id}")
+    public UsuarioResponseDTO actualizar(@PathVariable Long id, @RequestBody @Valid UsuarioRequestDTO dto) {
+        return usuarioService.actualizarUsuario(id, dto);
+    }
+
+
 }
