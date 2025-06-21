@@ -30,6 +30,7 @@ public class UsuarioController {
     }
 
     @PreAuthorize("hasRole('ADMINISTRADOR')")
+    @GetMapping("/{id}")
     public UsuarioResponseDTO obtener(@PathVariable Long id) {
         return usuarioService.obtenerPorId(id);
     }
@@ -45,6 +46,4 @@ public class UsuarioController {
     public UsuarioResponseDTO actualizar(@PathVariable Long id, @RequestBody @Valid UsuarioRequestDTO dto) {
         return usuarioService.actualizarUsuario(id, dto);
     }
-
-
 }
