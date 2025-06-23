@@ -29,7 +29,7 @@ public class DeclaracionJuradaController {
         return service.listar();
     }
 
-    @PreAuthorize("hasRole('VIAJERO')")
+    @PreAuthorize("hasAnyRole('VIAJERO', 'FUNCIONARIO_ADUANA')")
     @GetMapping("/{id}")
     public DeclaracionJuradaResponseDTO obtener(@PathVariable Long id) {
         return service.obtenerPorId(id);

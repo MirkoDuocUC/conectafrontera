@@ -22,7 +22,7 @@ public class ReporteEstadisticoController {
         return service.crear(dto);
     }
 
-    @PreAuthorize("hasRole('ADMINISTRADOR')")
+    @PreAuthorize("hasAnyRole('ADMINISTRADOR', 'FUNCIONARIO_ADUANA')")
     @GetMapping
     public List<ReporteEstadisticoResponseDTO> listar() {
         return service.listar();

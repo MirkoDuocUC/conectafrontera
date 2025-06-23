@@ -35,9 +35,9 @@ public class SecurityConfig {
 
                         // Accesos por rol según los controladores
                         .requestMatchers("/api/usuarios/**", "/api/admin/**").hasRole("ADMINISTRADOR")
-                        .requestMatchers("/api/aduana/**", "/api/vehiculos/**").hasRole("FUNCIONARIO_ADUANA")
+                        .requestMatchers("/api/aduana/**", "/api/vehiculos/**", "/api/declaraciones/**", "/api/reportes/**").hasRole("FUNCIONARIO_ADUANA")
                         .requestMatchers("/api/sag/**", "/api/productos/**").hasRole("INSPECTOR_SAG")
-                        .requestMatchers("/api/viajero/**", "/api/documentos/**", "/api/declaraciones/**", "/api/viajero-documento/**").hasRole("VIAJERO")
+                        .requestMatchers("/api/viajero/**", "/api/declaraciones/**", "/api/viajero-documento/**").hasRole("VIAJERO")
 
                         // Controladores adicionales
                         .requestMatchers("/api/declaracion-producto/**").hasAnyRole("INSPECTOR_SAG", "FUNCIONARIO_ADUANA")
